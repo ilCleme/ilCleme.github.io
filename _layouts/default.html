@@ -7,14 +7,17 @@
 
     {% include header.html %}
 
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
+    <div id="wrapper">
+      {{ content }}
+
+      {% include footer.html %}
     </div>
 
-    {% include footer.html %}
-
+    <!-- Scripts -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+    <script src="/js/main.js"></script>
   </body>
-
 </html>
