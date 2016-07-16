@@ -39,17 +39,30 @@
 -->
 <!-- Footer -->
 <section id="footer" class="wrapper split style2">
-  <div class="inner">
+  <div id="contact" class="inner">
     <section>
       <header>
-        <h3>Magna lorem ipsum</h3>
+        <h3>Contatti</h3>
       </header>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos magna fames ac turpis egestas amet non lorem amet.</p>
+      <p>Contattami per avere qualsiasi informazione. Se sei interessato, segui i miei canali social. Mi piace condividere conoscenze che possono essere utili per la crescita professionale di tutti gli sviluppatori.</p>
       <ul class="icons">
-        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-        <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-        <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-        <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+          {% if site.github_username %}
+          <li>
+              <a href="https://github.com/{{site.github_username}}" class="icon fa-github"><span class="label">GitHub</span></a>
+          </li>
+          {% endif %}
+
+          {% if site.twitter_username %}
+          <li>
+              <a href="https://twitter.com/{{site.twitter_username}}" class="icon fa-twitter"><span class="label">Twitter</span></a>
+          </li>
+          {% endif %}
+
+          {% if site.email%}
+            <li>
+                <a href="mailto:{{site.email}}" class="icon fa-envelope"><span class="label">Email</span></a>
+            </li>
+          {%endif%}
       </ul>
     </section>
     <section>
@@ -64,6 +77,6 @@
     </section>
   </div>
   <div class="copyright">
-    <p>&copy; Untitled. All rights reserved. Lorem ipsum dolor sit amet nullam.</p>
+    <p>&copy; Clementi Mattia. All rights reserved.</p>
   </div>
 </section>
