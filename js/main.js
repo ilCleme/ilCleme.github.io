@@ -1,9 +1,3 @@
-/*
-	Reflex by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
-*/
-
 (function($) {
 
 	skel.breakpoints({
@@ -21,126 +15,137 @@
 			$body = $('body');
 
 		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
+		$body.addClass('is-loading');
 
-			$window.on('load', function() {
-				window.setTimeout(function() {
-					$body.removeClass('is-loading');
-				}, 100);
-			});
+		$window.on('load', function() {
+			window.setTimeout(function() {
+				$body.removeClass('is-loading');
+			}, 100);
+		});
 
 		// Fix: Placeholder polyfill.
-			$('form').placeholder();
+		$('form').placeholder();
 
 		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
+		skel.on('+medium -medium', function() {
+			$.prioritize(
+				'.important\\28 medium\\29',
+				skel.breakpoint('medium').active
+			);
+		});
 
 		// Menu.
-			var $menu = $('#menu'),
-				$menuInner;
+		var $menu = $('#menu'),
+			$menuInner;
 
-			$menu.wrapInner('<div class="inner"></div>');
-			$menuInner = $menu.children('.inner');
-			$menu._locked = false;
+		$menu.wrapInner('<div class="inner"></div>');
+		$menuInner = $menu.children('.inner');
+		$menu._locked = false;
 
-			$menu._lock = function() {
+		$menu._lock = function() {
 
-				if ($menu._locked)
-					return false;
+			if ($menu._locked)
+				return false;
 
-				$menu._locked = true;
+			$menu._locked = true;
 
+			window.setTimeout(function() {
+				$menu._locked = false;
+			}, 350);
+
+			return true;
+
+		};
+
+		$menu._show = function() {
+
+			if ($menu._lock())
+				$menu.addClass('visible');
+
+		};
+
+		$menu._hide = function() {
+
+			if ($menu._lock())
+				$menu.removeClass('visible');
+
+		};
+
+		$menu._toggle = function() {
+
+			if ($menu._lock())
+				$menu.toggleClass('visible');
+
+		};
+
+		$menuInner
+			.on('click', function(event) {
+				event.stopPropagation();
+			})
+			.on('click', 'a', function(event) {
+
+				var href = $(this).attr('href');
+
+				event.preventDefault();
+				event.stopPropagation();
+
+				// Hide.
+				$menu._hide();
+
+				// Redirect.
 				window.setTimeout(function() {
-					$menu._locked = false;
-				}, 350);
+					window.location.href = href;
+				}, 250);
 
-				return true;
+			});
 
-			};
+		$menu
+			.appendTo($body)
+			.on('click', function(event) {
 
-			$menu._show = function() {
+				event.stopPropagation();
+				event.preventDefault();
 
-				if ($menu._lock())
-					$menu.addClass('visible');
+				$menu.removeClass('visible');
 
-			};
+			})
+			.append('<a class="close" href="#menu">Close</a>');
 
-			$menu._hide = function() {
+		$body
+			.on('click', 'a[href="#menu"]', function(event) {
 
-				if ($menu._lock())
-					$menu.removeClass('visible');
+				event.stopPropagation();
+				event.preventDefault();
 
-			};
+				// Toggle.
+				$menu._toggle();
 
-			$menu._toggle = function() {
+			})
+			.on('click', function(event) {
 
-				if ($menu._lock())
-					$menu.toggleClass('visible');
+				// Hide.
+				$menu._hide();
 
-			};
+			})
+			.on('keydown', function(event) {
 
-			$menuInner
-				.on('click', function(event) {
-					event.stopPropagation();
-				})
-				.on('click', 'a', function(event) {
+				// Hide on escape.
+				if (event.keyCode == 27)
+					$menu._hide();
 
-					var href = $(this).attr('href');
+			});
 
-					event.preventDefault();
-					event.stopPropagation();
+		/*var $anchor = $('a[href="#about-me"]');
 
-					// Hide.
-						$menu._hide();
+		$anchor
+			.on('click', function(event){
+				console.log('click');
+				event.stopPropagation();
+				event.preventDefault();
 
-					// Redirect.
-						window.setTimeout(function() {
-							window.location.href = href;
-						}, 250);
-
-				});
-
-			$menu
-				.appendTo($body)
-				.on('click', function(event) {
-
-					event.stopPropagation();
-					event.preventDefault();
-
-					$menu.removeClass('visible');
-
-				})
-				.append('<a class="close" href="#menu">Close</a>');
-
-			$body
-				.on('click', 'a[href="#menu"]', function(event) {
-
-					event.stopPropagation();
-					event.preventDefault();
-
-					// Toggle.
-						$menu._toggle();
-
-				})
-				.on('click', function(event) {
-
-					// Hide.
-						$menu._hide();
-
-				})
-				.on('keydown', function(event) {
-
-					// Hide on escape.
-						if (event.keyCode == 27)
-							$menu._hide();
-
-				});
-
+				$(document).scrollTop($anchor.offset().top);
+			});
+		*/
 	});
 
 })(jQuery);
