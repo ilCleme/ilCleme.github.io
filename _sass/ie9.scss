@@ -3,79 +3,73 @@
 @import 'libs/mixins';
 @import 'libs/skel';
 
-/*
-	Reflex by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
-*/
-
 /* Spotlight */
 
-	.spotlight {
-		&:after {
-			content: '';
-			display: block;
-			clear: both;
-		}
-
-		.image {
-			float: left;
-			width: 45%;
-			margin: 0 _size(element-margin) 0 0;
-		}
-
-		.content {
-			float: left;
-			width: 45%;
-			margin: 0 0 0 _size(element-margin);
-		}
+.spotlight {
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
 	}
+
+	.image {
+		float: left;
+		width: 45%;
+		margin: 0 _size(element-margin) 0 0;
+	}
+
+	.content {
+		float: left;
+		width: 45%;
+		margin: 0 0 0 _size(element-margin);
+	}
+}
 
 /* Wrapper */
 
-	.wrapper {
-		&.style3 {
-			@include vendor('background-image', 'url("../../images/pic05.jpg")');
-			background-attachment: scroll;
-		}
+.wrapper {
+	&.style3 {
+		@include vendor('background-image', 'url("../../images/pic05.jpg")');
+		background-attachment: scroll;
+	}
 
-		&.featured {
-			> .inner {
-				display: inline-block;
+	&.featured {
+		> .inner {
+			display: inline-block;
 
-				&:after {
-					content: '';
-					display: block;
-					clear: both;
-				}
-
-				> * {
-					float: left;
-				}
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
 			}
-		}
 
-		&.split {
-			> .inner {
-				&:after {
-					content: '';
-					display: block;
-					clear: both;
-				}
-
-				> * {
-					float: left;
-					width: 50%;
-					margin: 0 !important;
-				}
+			> * {
+				float: left;
 			}
 		}
 	}
+
+	&.split {
+		> .inner {
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+			> * {
+				float: left;
+				width: 50%;
+				margin: 0 !important;
+			}
+		}
+	}
+}
 
 /* Menu */
 
-	#menu {
-		> .inner {
-			display: inline-block;
-		}
+#menu {
+	> .inner {
+		display: inline-block;
 	}
+}
