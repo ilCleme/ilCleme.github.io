@@ -6,12 +6,12 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Clementi Mattia
+title: Clementi Mattia - Web Developer
 email: ilcleme@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Sono Mattia, laureato in Tecnologie Web, lavoro come Web Developer.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://127.0.0.1:4000" # the base hostname & protocol for your site
+url: "http://mattiaclementi.it" # the base hostname & protocol for your site
 twitter_username: MattiaClementi
 github_username:  ilCleme
 linkedin_username: mattia-clementi
