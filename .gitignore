@@ -8,3 +8,4 @@ Gem*
 .vagrant
 ansible
 *.zip
+Vagrantfile
