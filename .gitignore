@@ -4,3 +4,7 @@ _site
 Gem*
 .idea
 .DS_Store
+
+.vagrant
+ansible
+*.zip
