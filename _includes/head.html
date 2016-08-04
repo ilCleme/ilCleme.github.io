@@ -31,11 +31,21 @@
   <!-- <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}"> -->
   <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
-    "@type": "Person",
-    "name": "Mattia Clementi",
-    "jobTitle": "Web Developer",
-    "url": "http://mattiaclementi.it"
+    "@context": "http://schema.org",git status
+    "@type": "WebSite",
+    "name": "Sito personale di Mattia Clementi",
+    "alternateName": "La mia pagina personale in cui descrivo chi sono.",
+    "about": {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Mattia Clementi",
+      "jobTitle": "Web Developer"
+    },
+    "url": "http://www.your-site.com",
+    "sameAs": [
+      "http://www.linkedin.com/in/{{site.linkedin_username}}",
+      "http://twitter.com/{{site.twitter_username}}"
+    ]
   }
   </script>
 </head>
